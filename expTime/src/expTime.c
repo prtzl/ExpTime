@@ -20,12 +20,16 @@ void expTime_IRQ(void)
 }
 
 /**
-* @brief  Enables SysTick interrupt
+* @brief  Enables SysTick interrupt at 1kHz
 **/
 void expTime_init_ms(void)
 {
 #ifndef TIME_USE_HAL_TICK
-  SysTick->CTRL |= SysTick_CTRL_TICKINT_Msk;
+  SysTick->LOAD  = (uint32_t)((SystemCoreClock /1000U) - 1UL);   
+  SysTick->VAL   = 0UL;
+  SysTick->CTRL = SysTick_CTRL_TICKINT_Msk |
+                  SysTick_CTRL_CLKSOURCE_Msk|
+                  SysTick_CTRL_ENABLE_Msk;
   NVIC_EnableIRQ(SysTick_IRQn);
   NVIC_SetPriority(SysTick_IRQn, 0);
 #endif
