@@ -38,7 +38,7 @@ void expTime_init_ms(void)
 /**
 * @brief  Returns global millis tick value
 **/
-uint32_t expTime_getTIck(void)
+uint32_t expTime_getTick(void)
 {
 	return expTick;
 }
@@ -49,8 +49,8 @@ uint32_t expTime_getTIck(void)
 **/
 void expTime_delay_ms(const uint32_t delay)
 {
-	uint32_t tick_start = expTime_getTIck();
-	while((expTime_getTIck() -tick_start) < delay);
+	uint32_t tick_start = expTime_getTick();
+	while((expTime_getTick() -tick_start) < delay);
 }
 
 static uint32_t timeout_tick_start;
@@ -60,7 +60,7 @@ static uint32_t timeout_ms;
 **/
 void expTime_timeout_start(const uint32_t timeout)
 {
-  timeout_tick_start = expTime_getTIck();
+  timeout_tick_start = expTime_getTick();
   timeout_ms = timeout;
 }
 
@@ -71,7 +71,7 @@ void expTime_timeout_start(const uint32_t timeout)
 uint8_t expTime_timeout_check(void)
 {
   // Return OK if timeout has been reached
-  if(expTime_getTIck() > (timeout_tick_start +timeout_ms))
+  if(expTime_getTick() > (timeout_tick_start +timeout_ms))
   {
     return 0;
   }

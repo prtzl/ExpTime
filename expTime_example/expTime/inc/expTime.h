@@ -72,7 +72,7 @@ extern TIM_HandleTypeDef htim3;
 void expTime_IRQ(void);
 // ms functions
 void expTime_init_ms(void);
-uint32_t expTime_getTIck(void);
+uint32_t expTime_getTick(void);
 void expTime_delay_ms(const uint32_t delay);
 // Timeout functions
 void expTime_timeout_start(const uint32_t timeout);
