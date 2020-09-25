@@ -35,7 +35,7 @@
  * Config auto-reload register to maximum it will allow -> 16 bit = 0xffff
  * Everything else can be left on default
  *
- * source: https://github.com/SausageCode/nekinekineki
+ * source: https://github.com/SausageCode/ExpTime
  * written by Mate Blagsic (@SausageCode)
  */
 
