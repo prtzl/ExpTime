@@ -71,14 +71,14 @@ void expTime_timeout_start(const uint32_t timeout)
 uint8_t expTime_timeout_check(void)
 {
   // Return OK if timeout has been reached
-  if(expTime_getTick() > (timeout_tick_start +timeout_ms))
+  if((expTime_getTick() -timeout_tick_start) < timeout_ms)
   {
-    return 0;
+    return 1;
   }
   // Timeout not reached
   else
   {
-    return 1;
+    return 0;
   }
 }
 
